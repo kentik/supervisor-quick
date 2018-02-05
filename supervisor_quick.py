@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 __version__ = "0.1.4.dev0"
+
 from future import standard_library
 standard_library.install_aliases()
 

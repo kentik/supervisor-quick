@@ -23,9 +23,18 @@ CLASSIFIERS = [
 ]
 
 
+from io import open
+with open('supervisor_quick.py', encoding='utf-8') as fin:
+    for line in fin.readlines():
+        if '__version__' in line:
+            VERSION = eval(line.split('=')[-1])
+            break
+    else:
+        raise Exception('Could not find version in supervisor_quick.py')
+
 setup(
     name="supervisor-quick",
-    version=__import__("supervisor_quick").__version__,
+    version=VERSION,
     description="Bypass supervisor's nasty callbacks stack and make it quick!",
     classifiers=CLASSIFIERS,
     author="Lx Yu",
