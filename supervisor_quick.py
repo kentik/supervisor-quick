@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 
 __version__ = "0.1.4"
+from future import standard_library
+standard_library.install_aliases()
 
 import fnmatch
 import threading
 import time
-import xmlrpclib
+
+try:
+    from xmlrpclib import Fault
+except ImportError:
+    from xmlrpc.client import Fault
 
 from supervisor.supervisorctl import ControllerPluginBase
 
@@ -44,7 +50,7 @@ class QuickControllerPlugin(ControllerPluginBase):
             _command = getattr(supervisor, "{0}Process".format(command))
             try:
                 _command(process, False)
-            except xmlrpclib.Fault as e:
+            except Fault as e:
                 return self.ctl.output("{0} ERROR({1})".format(
                     process, e.faultString.split(':')[0]))
 
