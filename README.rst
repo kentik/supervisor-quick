@@ -3,6 +3,9 @@ Supervisor-Quick
 
 Bypass supervisor's nasty callbacks stack and make it quick!
 
+.. image:: https://api.codeclimate.com/v1/badges/43f260a554d34b0ac870/maintainability
+   :target: https://codeclimate.com/github/Shoobx/supervisor-quick/maintainability
+   :alt: Maintainability
 
 Usage
 -----
