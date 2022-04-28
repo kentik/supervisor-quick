@@ -56,7 +56,7 @@ class QuickControllerPlugin(ControllerPluginBase):
                     process, e.faultString.split(':')[0]))
 
             # state check
-            state = "RUNNING" if command is "start" else "STOPPED"
+            state = "RUNNING" if command == "start" else "STOPPED"
             count = self.retries
             while count:
                 current_state = supervisor.getProcessInfo(process)['statename']
