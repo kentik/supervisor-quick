@@ -40,7 +40,9 @@ class QuickControllerPlugin(ControllerPluginBase):
 
         processes = set()
         for p in self.ctl.get_supervisor().getAllProcessInfo():
-            p_name = "{0}:{1}".format(p["group"], p["name"])
+            # Kentik patch: only match process names, as we don't presently use groups
+            # p_name = "{0}:{1}".format(p["group"], p["name"])
+            p_name = p["name"]
             for pattern in patterns:
                 if fnmatch.fnmatch(p_name, pattern):
                     processes.add(p_name)
